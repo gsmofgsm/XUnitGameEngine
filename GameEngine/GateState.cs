@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace GameEngine
 {
@@ -30,7 +31,7 @@ namespace GameEngine
         private void CreateGameWorld()
         {
             // Simulate expensive creation
-            System.Threading.Thread.Sleep(2000);
+            Thread.Sleep(2000);
         }
     }
 }

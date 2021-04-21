@@ -28,6 +28,8 @@ namespace GameEngine.Tests
 
             var expectedHealthAfterEarthquake = player1.Health - GameState.EarthquakeDamage;
 
+            _gameStateFixture.State.Earthquake();
+
             Assert.Equal(expectedHealthAfterEarthquake, player1.Health);
             Assert.Equal(expectedHealthAfterEarthquake, player2.Health);
         }
