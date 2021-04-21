@@ -75,5 +75,25 @@ namespace GameEngine.Tests
             //Assert.Same(enemy1, enemy2); // fail
             Assert.NotSame(enemy1, enemy2);
         }
+
+        [Fact]
+        public void NotAllowNullName()
+        {
+            EnemyFactory sut = new EnemyFactory();
+
+            //Assert.Throws<ArgumentNullException>(() => sut.Create(null));
+            Assert.Throws<ArgumentNullException>("name", () => sut.Create(null)); // argument name
+        }
+
+        [Fact]
+        public void OnlyAllowKingOrQueenBossEnemies()
+        {
+            EnemyFactory sut = new EnemyFactory();
+
+            EnemyCreationException ex =
+                Assert.Throws<EnemyCreationException>(() => sut.Create("Zombie", true));
+
+            Assert.Equal("Zombie", ex.RequestedEnemyName);
+        }
     }
 }
