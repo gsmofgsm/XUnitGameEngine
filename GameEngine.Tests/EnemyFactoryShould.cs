@@ -63,5 +63,17 @@ namespace GameEngine.Tests
             //Assert.IsType<Enemy>(enemy); // this will fail
             Assert.IsAssignableFrom<Enemy>(enemy);
         }
+
+        [Fact]
+        public void CreateSeparateInstances()
+        {
+            EnemyFactory sut = new EnemyFactory();
+
+            Enemy enemy1 = sut.Create("Zombie");
+            Enemy enemy2 = sut.Create("Zombie");
+
+            //Assert.Same(enemy1, enemy2); // fail
+            Assert.NotSame(enemy1, enemy2);
+        }
     }
 }
